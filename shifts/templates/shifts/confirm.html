@@ -1,0 +1,37 @@
+{% extends "shifts/base.html" %}
+
+{% block main %}
+<div class="alert custom-alert" role="alert">
+    <h2>{{ post.date }} {{ post.starttime }}~{{ post.endtime}} でよろしいですか？</h2>
+    <form method="post" id="confirm">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" id="submitButton" class="btn btn-primary" disabled>確定</button>
+        <a class = "btn btn-danger" href="/">キャンセル</a>
+    </form>
+</div>
+
+<script>
+    // フォーム要素を取得
+    const form = document.getElementById('confirm');
+    const submitButton = document.getElementById('submitButton');
+  
+    // substituteフィールドを取得
+    const substituteField = form.querySelector('input[name="substitute"]');
+  
+    // 入力が有効か確認する関数
+    function validateForm() {
+        // substituteフィールドの値を取得
+        const value = substituteField.value.trim(); // 前後の空白を削除
+  
+        // 入力が空でなければボタンを有効化
+        submitButton.disabled = value === '';
+    }
+  
+    // 入力が変わったときにバリデーションを実行
+    substituteField.addEventListener('input', validateForm);
+  
+    // 初期チェック
+    validateForm();
+</script>
+{% endblock %}

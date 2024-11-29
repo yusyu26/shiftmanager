@@ -1,0 +1,119 @@
+<!doctype HTML>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJv+Q8v8s2XFE3Ycdixt5vbmGc1l2Y0/6T15N4eD6ymv5PSp14KT8jNxM4Hg" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <style>
+            /* サイドバーの固定 */
+            #wrapper {
+              display: flex;
+            }
+          
+            #sidebar {
+              width: 250px;
+              height: 100vh;
+              position: fixed;
+              top: 0;
+              left: 0;
+              padding-top: 20px;
+            }
+          
+            #page-content-wrapper {
+              margin-left: 250px;
+              padding: 20px;
+              width: 100%;
+            }
+          
+          
+            /* レスポンシブ対応 */
+            @media (max-width: 768px) {
+              #sidebar {
+                display: none;
+              }
+              #page-content-wrapper {
+                margin-left: 0;
+              }
+            }
+
+            .custom-alert {
+                background-color: #EDEDED;
+                color: #2C2C2C;
+                border: none;
+            }
+            .custom-btn {
+                background-color: #4A4A4A;
+                color: #FFFFFF;
+            }
+            .custom-btn:hover {
+                background-color: #FFFFFF; /* 背景色を白に変化 */
+                color: #4A4A4A; /* 文字色をダークグレーに変更 */    
+            }
+        </style>          
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">シフト管理</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'shortage_shift_create' %}">Submit</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Comming Soon…</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Sidebar -->
+        <!-- <div class="d-flex" id="wrapper">
+            <div class="bg-dark text-white" id="sidebar">
+                <div class="sidebar-heading">Admin</div>
+                <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Dashboard</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Orders</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Products</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Customers</a>
+                </div>
+            </div> -->
+            <!-- Page Content -->
+            <!-- <div id="page-content-wrapper">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <button class="btn btn-primary" id="menu-toggle">Toggle Sidebar</button>
+                </nav>
+                <div class="container-fluid">
+                    <h1 class="mt-4">Dashboard</h1>
+                    <p>This is your dashboard content.</p>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="container mt-4">
+        {% block main %}
+        <p>※コンテンツがありません。</p>
+        {% endblock %}
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0wOXg6p9p6iCTn4ScnB1f2eXElz0Q5uZ05+hHgXNmeZXgOhE" crossorigin="anonymous"></script>
+        <script>
+            const menuToggle = document.getElementById('menu-toggle');
+            const sidebar = document.getElementById('sidebar');
+          
+            menuToggle.addEventListener('click', function() {
+              sidebar.classList.toggle('d-none');
+            });
+        </script>
+          
+    </body>
+</html>
