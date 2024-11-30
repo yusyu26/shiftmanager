@@ -1,6 +1,6 @@
 {% extends "shifts/base.html" %}
 {% block main %}
-<ol>
+<div class="container content-box mt-4">
     <h2>不足シフト一覧</h2>
     {% for post in no_substitute_shifts %}
     <div class="alert custom-alert" role="alert">
@@ -18,7 +18,7 @@
     {% empty %}
         <p>不足シフトはありません</p>
     {% endfor %}
-</ol>
+</div>
 <ol>
     {% for post in filled_substitute_shifts %}
     <h2>埋まったシフト</h2>

@@ -29,18 +29,21 @@
             /* レスポンシブ対応 */
             @media (max-width: 768px) {
                 body {
-                    font-size: 14px;
-                    padding: 10px;
+                    font-size: 15px;
                 }
-            
                 .container {
                     width: 100%;
                     padding: 0;
                 }
-            
                 .navbar {
-                    font-size: 14px; /* ナビゲーションバーの文字サイズを調整 */
-                }            }
+                    font-size: 15px; /* ナビゲーションバーの文字サイズを調整 */
+                }
+            }
+            
+            .content-box {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
             .custom-alert {
                 background-color: #EDEDED;
                 color: #2C2C2C;
@@ -53,6 +56,9 @@
             .custom-btn:hover {
                 background-color: #FFFFFF; /* 背景色を白に変化 */
                 color: #4A4A4A; /* 文字色をダークグレーに変更 */    
+            }
+            .navbar-nav {
+                align-items: center;
             }
         </style>          
     </head>
@@ -73,35 +79,12 @@
                             <a class="nav-link" href="{% url 'shortage_shift_create' %}">Submit</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Comming Soon…</a>
+                            <a class="nav-link" href="#">Coming Soon…</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-
-        <!-- Sidebar -->
-        <!-- <div class="d-flex" id="wrapper">
-            <div class="bg-dark text-white" id="sidebar">
-                <div class="sidebar-heading">Admin</div>
-                <div class="list-group list-group-flush">
-                    <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Dashboard</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Orders</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Products</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Customers</a>
-                </div>
-            </div> -->
-            <!-- Page Content -->
-            <!-- <div id="page-content-wrapper">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <button class="btn btn-primary" id="menu-toggle">Toggle Sidebar</button>
-                </nav>
-                <div class="container-fluid">
-                    <h1 class="mt-4">Dashboard</h1>
-                    <p>This is your dashboard content.</p>
-                </div>
-            </div>
-        </div> -->
 
         <div class="container mt-4">
         {% block main %}
