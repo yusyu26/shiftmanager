@@ -19,7 +19,7 @@
         <p>不足シフトはありません</p>
     {% endfor %}
 </div>
-<ol>
+<div class="container content-box mt-4">
     {% for post in filled_substitute_shifts %}
     <h2>埋まったシフト</h2>
     <div class="alert custom-alert" role="alert">
@@ -37,5 +37,5 @@
     {% empty %}
     <p>埋まったシフトはありません。</p>
     {% endfor %}
-</ol>
+</div>
 {% endblock %}
