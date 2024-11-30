@@ -1,0 +1,8 @@
+# 静的ファイルを統計から除外
+static/* linguist-vendored
+*.css linguist-vendored
+*.js linguist-vendored
+
+# マイナファイルも除外
+*.min.css linguist-vendored
+*.min.js linguist-vendored
