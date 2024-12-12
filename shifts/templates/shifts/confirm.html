@@ -6,11 +6,17 @@
     <form method="post" id="confirm">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" id="submitButton" class="btn btn-primary" disabled>確定</button>
-        <a class = "btn btn-danger" href="/">キャンセル</a>
+        <div class="button-container">
+            <button type="submit" id="submitButton" class="btn btn-primary" disabled>確定</button>
+            <a class = "btn btn-danger" href="/">キャンセル</a>    
+        </div>
     </form>
 </div>
-
+<style>
+    .button-container {
+        text-align: right;
+    }
+</style>
 <script>
     // フォーム要素を取得
     const form = document.getElementById('confirm');
