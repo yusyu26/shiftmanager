@@ -19,39 +19,7 @@
 - **バックエンド**: Python
 ---
 
-## 起動方法
-1. リポジトリをクローン:
-    ```bash
-    git clone https://github.com/your-username/shift-management-app.git
-    cd shift-management-app
-    ```
-
-2. 仮想環境を作成して有効化:
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # Windowsの場合: venv\Scripts\activate
-    ```
-
-3. 必要なパッケージをインストール:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4. マイグレーションを実行:
-    ```bash
-    python manage.py migrate
-    ```
-
-5. サーバーを起動:
-    ```bash
-    python manage.py runserver
-    ```
-
-6. ブラウザでアクセス:  
-   `http://127.0.0.1:8000/`
-
----
 
 ## 今後の展望
 - **カレンダー表示機能の作成**
-- - ****: Django
+- **LINE通知機能の作成**
