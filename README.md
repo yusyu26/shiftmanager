@@ -14,7 +14,7 @@
 
 ## 使用技術
 - **フレームワーク**: Django
-- **データベース**: SQLite
+- **データベース**: PostgreSQL
 - **フロントエンド**: HTML, CSS, JavaScript
 - **バックエンド**: Python
 ---
