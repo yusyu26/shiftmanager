@@ -4,6 +4,8 @@ from .models import Post
 from .forms import PostForm
 from django.http import Http404
 from django.utils import timezone
+from .utils.line_notify import send_line_notification
+
     
 class Index(ListView):
     model = Post
@@ -35,6 +37,15 @@ class Create(CreateView):
     model = Post
     form_class = PostForm
     success_url = "/"
+    
+    def form_valid(self, form):
+        # フォームデータを保存
+        response = super().form_valid(form)
+        
+        # LINE通知のロジック
+        send_line_notification(form.instance)
+        
+        return response
 
 class Confirmsubstitute(UpdateView):
     model = Post
