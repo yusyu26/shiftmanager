@@ -1,105 +1,92 @@
 <!doctype HTML>
 <html>
-    <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJv+Q8v8s2XFE3Ycdixt5vbmGc1l2Y0/6T15N4eD6ymv5PSp14KT8jNxM4Hg" crossorigin="anonymous">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            /* サイドバーの固定 */
-            #wrapper {
-              display: flex;
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        .navbar {
+            background-color: #2c3e50; /* ネイビーブルー */
+        }
+        .navbar-brand {
+            font-size: 1.25rem;
+            color: #ecf0f1;
+        }
+        .navbar-brand:hover {
+            color: #bdc3c7;
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card-title {
+            font-size: 1.2rem;
+        }
+        .card-text-important {
+            color: #e74c3c; /* 赤 */
+            font-weight: bold;
+        }
+        .btn-custom {
+            background-color: #34495e; /* ダークブルー */
+            color: #ecf0f1;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 1rem;
+        }
+        .btn-custom:hover {
+            background-color: #2c3e50;
+        }
+        /* フッターボタン */
+        .fixed-action-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #2c3e50;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+        }
+        .fixed-action-bar a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1.2rem;
+            text-align: center;
+            flex-grow: 1;
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px;
             }
-          
-            #sidebar {
-              width: 250px;
-              height: 100vh;
-              position: fixed;
-              top: 0;
-              left: 0;
-              padding-top: 20px;
-            }
-          
-            #page-content-wrapper {
-              margin-left: 250px;
-              padding: 20px;
-              width: 100%;
-            }
-          
-          
-            /* レスポンシブ対応 */
-            @media (max-width: 768px) {
-                body {
-                    font-size: 15px;
-                }
-                .container {
-                    width: 100%;
-                    padding: 0;
-                }
-                .navbar {
-                    font-size: 15px; /* ナビゲーションバーの文字サイズを調整 */
-                }
-            }
-            
-            .content-box {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-            .custom-alert {
-                background-color: #EDEDED;
-                color: #2C2C2C;
-                border: none;
-            }
-            .custom-btn {
-                background-color: #4A4A4A;
-                color: #FFFFFF;
-            }
-            .custom-btn:hover {
-                background-color: #FFFFFF; /* 背景色を白に変化 */
-                color: #4A4A4A; /* 文字色をダークグレーに変更 */    
-            }
-            .navbar-nav {
-                align-items: center;
-            }
-        </style>          
-    </head>
-    <body>
-        <!-- Navbar -->
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/">シフト管理</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="{% if request.path == '/' %}page{% endif %}" aria-current="page" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/create/' %}active{% endif %}" aria-current="{% if request.path == '/create/' %}page{% endif %}" href="{% url 'shortage_shift_create' %}">Submit</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Coming Soon…</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">シフト管理</a>
+        </div>
+    </nav>
 
-        <div class="container mt-4">
+    <!-- メインコンテンツ -->
+    <div class="container mt-4">
         {% block main %}
         <p>※コンテンツがありません。</p>
         {% endblock %}
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0wOXg6p9p6iCTn4ScnB1f2eXElz0Q5uZ05+hHgXNmeZXgOhE" crossorigin="anonymous"></script>
-        <script>
-            const menuToggle = document.getElementById('menu-toggle');
-            const sidebar = document.getElementById('sidebar');
-          
-            menuToggle.addEventListener('click', function() {
-              sidebar.classList.toggle('d-none');
-            });
-        </script>
-          
-    </body>
+    </div>
+
+    <!-- アクションバー -->
+    <div class="fixed-action-bar">
+        <a href="/">ホーム</a>
+        <a href="{% url 'shortage_shift_create' %}">登録</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
