@@ -13,7 +13,7 @@ def send_line_notification(post):
         "Content-Type": "application/json",
     }
 
-    message = f"新しい不足シフトが登録されました！\n\n日付: {post.date}\n時間: {post.starttime.strftime('%H:%M')}~{post.endtime.strftime('%H:%M')}"
+    message = f"新しい不足シフトが登録されました！\n\n日付:{ post.date }\n時間:{ post.starttime }~{ post.endtime }"
     
     data = {
         "to": group_id,

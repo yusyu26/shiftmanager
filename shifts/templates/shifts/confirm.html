@@ -1,20 +1,39 @@
 {% extends "shifts/base.html" %}
 
 {% block main %}
-<div class="alert custom-alert" role="alert">
-    <h2>{{ post.date }} {{ post.starttime }}~{{ post.endtime}} でよろしいですか？</h2>
+<div class="card shadow-sm p-4 mb-4 bg-white rounded">
+    <h3 class="text-center mb-4">{{ post.date }}<br>{{ post.starttime }}~{{ post.endtime }}<br>のシフトに入りますか？</h3>
     <form method="post" id="confirm">
         {% csrf_token %}
-        {{ form.as_p }}
-        <div class="button-container">
-            <button type="submit" id="submitButton" class="btn btn-primary" disabled>確定</button>
-            <a class = "btn btn-danger" href="/">キャンセル</a>    
+        <div class="form-group mb-3">
+            <label for="substitute">シフト交代者名:</label>
+            <input 
+                type="text" 
+                name="substitute" 
+                id="substitute" 
+                class="form-control" 
+                placeholder="交代者の名前を入力してください" 
+            >
+        </div>
+        <div class="text-center mt-4">
+            <button type="submit" id="submitButton" class="btn btn-primary px-4" disabled>確定</button>
+            <a class="btn btn-danger px-4 ml-2" href="/">キャンセル</a>
         </div>
     </form>
 </div>
+
 <style>
-    .button-container {
-        text-align: right;
+    .card {
+        max-width: 500px;
+        margin: auto;
+    }
+    h3 {
+        font-weight: bold;
+        color: #343a40;
+    }
+    .form-group label {
+        font-size: 1rem;
+        color: #495057;
     }
 </style>
 <script>

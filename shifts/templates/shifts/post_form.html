@@ -1,13 +1,54 @@
 {% extends "shifts/base.html" %}
 
 {% block main %}
-<div class="container content-box mt-4">
-    <h2>シフト不足情報の追加</h2>
-    <form method="post">
+<div class="card shadow-sm p-4 mb-4 bg-white rounded">
+    <h3 class="text-center mb-4">シフト不足情報の追加</h3>
+    <form method="post" id="shiftForm">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="投稿" class="btn btn-primary" />
+        <div class="form-group mb-3">
+            <label for="id_date">{{ form.date.label }}</label>
+            {{ form.date }}
+        </div>
+        <div class="form-group mb-3">
+            <label for="id_starttime">{{ form.starttime.label }}</label>
+            {{ form.starttime }}
+        </div>
+        <div class="form-group mb-3">
+            <label for="id_endtime">{{ form.endtime.label }}</label>
+            {{ form.endtime }}
+        </div>
+        <div class="form-group mb-3">
+            <label for="id_author">{{ form.author.label }}</label>
+            {{ form.author }}
+        </div>
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary px-4">投稿</button>
+            <a class="btn btn-danger px-4 ml-2" href="/">キャンセル</a>
+        </div>
     </form>
-  
 </div>
+
+<style>
+    .card {
+        max-width: 600px;
+        margin: auto;
+    }
+    h3 {
+        font-weight: bold;
+        color: #343a40;
+    }
+    .form-group label {
+        font-size: 1rem;
+        color: #495057;
+    }
+    input[type="date"],
+    input[type="time"],
+    input[type="text"] {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+    }
+</style>
 {% endblock %}
