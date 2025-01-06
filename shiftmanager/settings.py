@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv, find_dotenv
 import os
+import dj_database_url
 
 load_dotenv(find_dotenv())
 
@@ -81,11 +82,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'shiftmanager.wsgi.application'
 
 
-import dj_database_url
-from dotenv import (
-    find_dotenv,
-    load_dotenv,
-)
 load_dotenv(find_dotenv())
 DATABASES = {
     'default': dj_database_url.config(conn_max_age=600),
@@ -134,7 +130,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-import dj_database_url
+
 DATABASES = {
     'default': dj_database_url.config(
         default=os.environ.get('DATABASE_URL'),

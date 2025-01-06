@@ -1,5 +1,16 @@
+import logging
 import requests
 from django.conf import settings
+
+logger = logging.getLogger(__name__)
+
+LINE_API_URL = "https://api.line.me/v2/bot/message/push"
+LINE_MESSAGE_TEMPLATE = """
+新しい不足シフトが登録されました！
+
+日付: {date}
+時間: {starttime}~{endtime}
+"""
 
 def send_line_notification(post):
     """
@@ -13,8 +24,10 @@ def send_line_notification(post):
         "Content-Type": "application/json",
     }
 
-    message = f"新しい不足シフトが登録されました！\n\n日付:{ post.date }\n時間:{ post.starttime }~{ post.endtime }"
-    
+    message = LINE_MESSAGE_TEMPLATE.format(
+        date=post.date, starttime=post.starttime, endtime=post.endtime
+    )
+     
     data = {
         "to": group_id,
         "messages": [
@@ -24,9 +37,9 @@ def send_line_notification(post):
 
     try:
         response = requests.post(
-            "https://api.line.me/v2/bot/message/push", headers=headers, json=data
+            LINE_API_URL, headers=headers, json=data
         )
         response.raise_for_status()  # エラーがあれば例外を発生させる
     except requests.exceptions.RequestException as e:
-        # エラー処理をログ出力などで行う
-        print(f"LINE通知の送信に失敗しました: {e}")
+        # エラー処理
+        logger.error(f"LINE通知の送信に失敗しました: {e}")
