@@ -1,5 +1,10 @@
 {% extends "shifts/base.html" %}
 {% block main %}
+<style>
+    .loginout {
+        padding-bottom: 150px;
+    }
+</style>
 <div class="container mt-4">
 
     <!-- 不足シフト一覧 -->
@@ -48,9 +53,9 @@
         <p>現在、埋まったシフトはありません。</p>
     {% endif %}
     {% if user.is_authenticated %}
-    <a href="{% url 'logout' %}">logout</a>
+    <a class="loginout" href="{% url 'logout' %}">logout</a>
     {% else %}
-    <a href="{% url 'login' %}">login</a>
+    <a class="loginout" href="{% url 'login' %}">login</a>
     {% endif %}
 </div>
 {% endblock %}
